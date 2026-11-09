@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parcours Éducatif Unique – Maquette</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g:#008751;--gd:#04321f;--y:#fcd116;--r:#e8112d;--bg:#f6f7f2;--card:#fff;--ink:#14211b;--mut:#5b6a62;--line:#dde3da;--soft:#e7f3ec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1612;--card:#16221b;--ink:#eef3ee;--mut:#9fb0a5;--line:#27382d;--soft:#173626;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1612;--card:#16221b;--ink:#eef3ee;--mut:#9fb0a5;--line:#27382d;--soft:#173626;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;line-height:1.12;margin:0 0 .5em}
+.demo{background:var(--gd);color:#fff;font-size:13px;text-align:center;padding:6px 12px}
+.flag{display:flex;height:6px}.flag i{flex:1}.flag i:nth-child(1){background:var(--g)}.flag i:nth-child(2){background:var(--y)}.flag i:nth-child(3){background:var(--r)}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bar{max-width:1080px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;line-height:1.1}
+.brand small{display:block;font:500 12px "Public Sans",sans-serif;color:var(--mut)}
+nav{display:flex;gap:4px;overflow-x:auto;margin-left:auto;max-width:100%}
+nav button{border:0;background:none;color:var(--ink);font:600 14px "Public Sans",sans-serif;padding:8px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+nav button[aria-current="page"]{background:var(--g);color:#fff}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+main{max-width:1080px;margin:auto;padding:20px 16px 56px}
+section[hidden]{display:none}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch}
+@media(max-width:800px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(30px,5.2vw,52px);font-weight:800}
+.lead{color:var(--mut);max-width:56ch}
+.btn{display:inline-block;border:0;background:var(--g);color:#fff;font:600 15px "Public Sans",sans-serif;padding:12px 18px;border-radius:10px;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.emblem{aspect-ratio:1/1.05;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;min-height:240px}
+.emblem .a{background:var(--g);grid-row:1/3;display:flex;align-items:flex-end;padding:16px;color:#fff;font:800 20px "Bricolage Grotesque",sans-serif}
+.emblem .b{background:var(--y);display:flex;align-items:flex-end;padding:14px;color:#3a2f00;font:700 14px "Public Sans",sans-serif}
+.emblem .c{background:var(--r);display:flex;align-items:flex-end;padding:14px;color:#fff;font:700 14px "Public Sans",sans-serif}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.path{margin:26px 0;overflow-x:auto;padding-bottom:6px}
+.path ol{list-style:none;margin:0;padding:0;display:flex;min-width:760px}
+.path li{flex:1;position:relative;text-align:center}
+.path li:before{content:"";position:absolute;top:15px;left:0;right:0;height:3px;background:var(--line)}
+.path li:first-child:before{left:50%}.path li:last-child:before{right:50%}
+.path button{position:relative;z-index:1;width:34px;height:34px;border-radius:50%;border:3px solid var(--g);background:var(--card);cursor:pointer;display:block;margin:0 auto 6px}
+.path button[aria-pressed="true"]{background:var(--g)}
+.path span{font-size:13px;font-weight:600}
+#stopinfo{margin-top:12px;border-left:5px solid var(--y)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid3{grid-template-columns:1fr}}
+.lvl{border-top:6px solid var(--g)}.lvl:nth-child(2){border-color:var(--y)}.lvl:nth-child(3){border-color:var(--r)}
+.partners{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pt{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:600}
+.pt b{width:34px;height:34px;border-radius:8px;background:var(--soft);color:var(--g);display:grid;place-items:center;font-size:11px}
+.ussd{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.phone{width:210px;background:#101814;color:#b6f5cf;border-radius:22px;padding:18px 14px;font:13px/1.5 ui-monospace,Consolas,monospace;border:4px solid #2b3a31}
+.phone button{display:block;width:100%;text-align:left;background:none;border:0;color:#b6f5cf;font:inherit;cursor:pointer;padding:2px 0}
+h2{font-size:clamp(22px,3.4vw,30px);margin-top:34px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+@media(max-width:560px){.kv{grid-template-columns:1fr}}
+.tag{display:inline-block;background:var(--soft);color:var(--g);font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px}
+.child{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.av{width:48px;height:48px;border-radius:50%;background:var(--y);color:#3a2f00;display:grid;place-items:center;font:800 18px "Bricolage Grotesque",sans-serif}
+.acts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+@media(max-width:700px){.acts{grid-template-columns:1fr 1fr}}
+.acts button{background:var(--soft);border:1px solid var(--line);color:var(--ink);padding:14px 10px;border-radius:12px;font:600 14px "Public Sans",sans-serif;cursor:pointer;min-height:64px}
+.steps{display:flex;gap:6px;margin:12px 0 18px}
+.steps i{flex:1;height:6px;border-radius:3px;background:var(--line)}.steps i.on{background:var(--g)}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.chk{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.chk em{font-style:normal;color:var(--g);font-weight:700}
+.qr{display:grid;grid-template-columns:repeat(21,1fr);width:132px;height:132px;background:#fff;padding:6px;border-radius:8px;border:1px solid var(--line)}
+.qr i{background:#fff}.qr i.k{background:#111}
+.tl{list-style:none;margin:14px 0;padding:0}
+.tl li{position:relative;padding:0 0 18px 34px;color:var(--mut)}
+.tl li:before{content:"";position:absolute;left:8px;top:22px;bottom:-2px;width:2px;background:var(--line)}
+.tl li:last-child:before{display:none}
+.tl li:after{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;border:3px solid var(--line);background:var(--card)}
+.tl li.ok{color:var(--ink)}.tl li.ok:after{background:var(--g);border-color:var(--g)}
+.tl li.now:after{border-color:var(--y);background:var(--y)}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:800px){.kp{grid-template-columns:1fr 1fr}}
+.kp b{display:block;font:800 30px "Bricolage Grotesque",sans-serif;color:var(--g)}
+.bars div{display:grid;grid-template-columns:96px 1fr 44px;gap:10px;align-items:center;font-size:14px;margin:7px 0}
+.bars span{height:12px;background:var(--line);border-radius:6px;overflow:hidden}.bars span i{display:block;height:100%;background:var(--g)}
+.bars .lo i{background:var(--r)}.bars .mid i{background:var(--y)}
+.note{font-size:13px;color:var(--mut)}
+footer{border-top:1px solid var(--line);padding:18px 16px;text-align:center;color:var(--mut);font-size:13px}
+.tb{width:100%;border-collapse:collapse;font-size:14px}.tb th,.tb td{padding:8px;border-bottom:1px solid var(--line);text-align:left}.tb input{width:76px;padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+.rcp{margin-top:14px;border-left:5px solid var(--g)}
+.ta{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.cb{display:flex;gap:10px;align-items:center;margin:8px 0;font-weight:500}
+.bb{background:#1f3a2b;color:#e8fff1;border-radius:12px 12px 12px 2px;padding:8px 10px;margin:8px 0;font:13px/1.45 "Public Sans",sans-serif}
+@media(prefers-reduced-motion:no-preference){.path button,.btn,nav button{transition:background .15s,transform .1s}.btn:active{transform:scale(.98)}}
+</style>
+</head>
+<body>
+<div class="demo">Maquette de démonstration d’une proposition citoyenne : ce site n’est pas un service officiel.</div>
+<div class="flag"><i></i><i></i><i></i></div>
+<header><div class="bar">
+<div class="brand"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#008751"/><rect x="20" width="20" height="20" fill="#fcd116"/><rect x="20" y="20" width="20" height="20" rx="0" fill="#e8112d"/><path d="M8 28V16l6-4 6 4v12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><circle cx="14" cy="21" r="2.4" fill="#fff"/></svg><div>Parcours Éducatif Unique<small>République du Bénin · Éducation et Formation</small></div></div>
+<nav id="nav" aria-label="Navigation principale"></nav>
+</div></header>
+<main>
+
+<section id="accueil">
+<div class="hero">
+<div><h1>Un identifiant, une seule saisie, tout le parcours de l’enfant.</h1>
+<p class="lead">De la maternelle à l’emploi, chaque inscription, transfert, examen ou bourse s’appuie sur le même dossier. Les familles ne redonnent plus ce que l’État détient déjà.</p>
+<p><button class="btn" data-go="famille">Ouvrir l’espace famille</button> <button class="btn alt" data-go="pilotage">Voir le pilotage national</button></p></div>
+<div class="emblem" aria-hidden="true"><div class="a">Une identité,<br>toute la scolarité</div><div class="b">Moins de déplacements</div><div class="c">Zéro pièce redemandée</div></div>
+</div>
+<h2>La présentation en vidéo</h2>
+<div class="card"><video controls playsinline preload="metadata" style="width:100%;border-radius:10px;background:#000" src="presentation.mp4"></video></div>
+
+<h2>Le parcours d’un apprenant</h2>
+<p class="note">Touchez une étape pour voir les démarches rattachées.</p>
+<div class="path"><ol id="path"></ol></div>
+<div class="card" id="stopinfo"></div>
+
+<h2>Trois niveaux, un seul système</h2>
+<div class="grid3">
+<div class="card lvl"><h3>Base</h3><p>Identifiant unique de l’apprenant lié au NPI. Inscription en ligne, par USSD ou avec l’aide de l’école ou de la mairie.</p></div>
+<div class="card lvl"><h3>Procédures</h3><p>Examens, transferts, admissions, bourses et équivalences partent du même dossier, avec suivi et délais annoncés.</p></div>
+<div class="card lvl"><h3>Pilotage</h3><p>Un tableau de bord anonymisé pour planifier les classes, les enseignants et cibler les bourses.</p></div>
+</div>
+
+<h2>Ce que la plateforme permet</h2>
+<div class="grid3">
+<div class="card"><h3>Payer et être exonéré</h3><p>Frais payés par mobile money en tranches. Exonération totale ou partielle vérifiée dans le dossier, sans pièce.</p><button class="btn alt" data-go="paiements">Voir la scolarité</button></div>
+<div class="card"><h3>Saisir les notes</h3><p>Écoles et universités saisissent, contrôlent et publient les notes. Bulletins et relevés se génèrent seuls.</p><button class="btn alt" data-go="ecole">Voir l’espace école</button></div>
+<div class="card"><h3>Demander un acte</h3><p>Relevé, attestation, diplôme ou duplicata, demandés en ligne et vérifiables par QR code.</p><button class="btn alt" data-go="actes">Voir les actes</button></div>
+<div class="card"><h3>Contester une note</h3><p>Une réclamation en ligne, avec délai de réponse fixé et décision motivée.</p><button class="btn alt" data-go="notes">Voir les notes</button></div>
+<div class="card"><h3>Être alerté par SMS</h3><p>Paiement, notes, actes, réclamations : le parent est prévenu sur n’importe quel téléphone.</p><button class="btn alt" data-go="sms">Voir les alertes</button></div>
+</div>
+
+<h2>Sans smartphone aussi</h2>
+<div class="card ussd"><div class="phone" id="ussd"></div><div style="flex:1;min-width:220px"><h3>Le canal USSD</h3><p>Un parent sans connexion consulte le dossier de son enfant, lance un transfert ou suit une demande depuis n’importe quel téléphone. L’agent de mairie ou le directeur d’école peut aussi saisir à sa place.</p><p class="note">Le code affiché est fictif.</p></div></div>
+
+<h2>Administrations reliées</h2>
+<div class="partners" id="partners"></div>
+<p class="note">Intégrer les logos officiels après validation par chaque administration.</p>
+</section>
+
+<section id="famille" hidden>
+<h2 style="margin-top:6px">Espace famille</h2>
+<div class="card"><div class="child"><div class="av">AK</div><div><b>Adjoa K.</b> <span class="tag">Parent connecté via NPI</span><div class="note">Compte relié à 2 enfants</div></div></div>
+<div class="kv" id="kids"></div></div>
+<h2>Que souhaitez-vous faire ?</h2>
+<div class="acts"><button data-go="paiements">Payer la scolarité</button><button data-go="actes">Demander un acte</button><button data-go="demarche">Changer d’école</button><button data-act="exam">Inscription aux examens</button></div>
+<div class="card" id="actinfo" style="margin-top:14px"><b>Données déjà détenues par l’État</b><div class="chk"><em>✓</em> Acte de naissance (état civil)</div><div class="chk"><em>✓</em> Identité du parent (NPI)</div><div class="chk"><em>✓</em> Bulletins de l’année en cours (école)</div><div class="note" style="margin-top:8px">Ces pièces ne sont jamais redemandées.</div></div>
+</section>
+
+<section id="demarche" hidden>
+<h2 style="margin-top:6px">Changer d’école</h2>
+<div class="steps" id="stp"></div>
+<div class="card" id="wiz"></div>
+</section>
+
+<section id="suivi" hidden>
+<h2 style="margin-top:6px">Suivi de mes demandes</h2>
+<div class="card" id="trk"></div>
+</section>
+
+<section id="paiements" hidden>
+<h2 style="margin-top:6px">Scolarité et paiements</h2>
+<div class="card" id="pay"></div>
+</section>
+
+<section id="actes" hidden>
+<h2 style="margin-top:6px">Actes académiques</h2>
+<div class="card" id="act"></div>
+<div class="card" id="actl" style="margin-top:14px"></div>
+<p class="note">Cette demande se branche sur les services déjà en place dans les universités et ministères : elle les relie au lieu de les remplacer.</p>
+</section>
+
+<section id="notes" hidden>
+<h2 style="margin-top:6px">Notes et réclamations</h2>
+<div class="card" id="nt"></div>
+<div class="card" id="rl" style="margin-top:14px"></div>
+</section>
+
+<section id="sms" hidden>
+<h2 style="margin-top:6px">Alertes SMS aux parents</h2>
+<div class="card" id="sm"></div>
+</section>
+
+<section id="ecole" hidden>
+<h2 style="margin-top:6px">Espace école et université</h2>
+<div class="card" id="eco"></div>
+</section>
+
+<section id="pilotage" hidden>
+<h2 style="margin-top:6px">Pilotage national</h2>
+<p class="note">Données fictives de démonstration, anonymisées et agrégées.</p>
+<div class="kp">
+<div class="card"><b>72 h</b>délai cible de transfert</div>
+<div class="card"><b>86 %</b>demandes traitées dans le délai</div>
+<div class="card"><b>0</b>pièce redemandée par démarche</div>
+<div class="card"><b>12</b>départements connectés</div>
+</div>
+<div class="card" style="margin-top:14px"><h3>Demandes traitées dans le délai, par département</h3><div class="bars" id="bars"></div></div>
+<div class="grid3" style="margin-top:14px">
+<div class="card"><h3>Alertes</h3><p>5 écoles dépassent le délai de transmission de dossier. Rappel automatique envoyé.</p></div>
+<div class="card"><h3>Planification</h3><p>Pression sur les effectifs détectée dans 3 communes : besoin de classes à anticiper.</p></div>
+<div class="card"><h3>Bourses</h3><p>Ciblage des familles à faible revenu à partir du dossier unique, sans nouvelle pièce.</p></div>
+</div>
+</section>
+</main>
+<footer>Maquette conceptuelle du Parcours Éducatif Unique · Proposition au Prix National de la Simplification Administrative<br>Noms, chiffres et codes fictifs. Couleurs inspirées du drapeau du Bénin.</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const tabs=[["accueil","Accueil"],["famille","Espace famille"],["notes","Notes"],["paiements","Scolarité"],["actes","Actes"],["demarche","Transfert"],["suivi","Suivi"],["sms","Alertes SMS"],["ecole","Espace école"],["pilotage","Pilotage"]];
+$("#nav").innerHTML=tabs.map(t=>`<button data-go="${t[0]}">${t[1]}</button>`).join("");
+function go(id){
+  if(!tabs.some(t=>t[0]===id))id="accueil";
+  document.querySelectorAll("main>section").forEach(s=>s.hidden=s.id!==id);
+  document.querySelectorAll("#nav button").forEach(b=>{if(b.dataset.go===id)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+  if(id==="suivi")drawTrk();
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){go(g.dataset.go)}});
+window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
+
+/* Parcours */
+const stops=[
+["Maternelle","Première inscription : l’identifiant unique est créé et lié au NPI de l’enfant. Aucun acte à redéposer."],
+["Primaire","Réinscription chaque année en quelques touches. Transfert si la famille déménage."],
+["CEP","Inscription à l’examen déclenchée depuis le dossier, sans liste papier."],
+["Collège","Passage automatique au collège et choix de l’établissement avec places visibles."],
+["BEPC","Inscription et résultats reliés au même dossier."],
+["Lycée","Orientation appuyée par des données fiables, transfert en ligne."],
+["BAC","Inscription et attestation de réussite à QR code vérifiable par tous."],
+["Université ou formation","Admission, bourse et équivalence sans nouvelle pièce, en lien avec les services existants."],
+["Emploi","Un employeur vérifie un diplôme en scannant un QR code."]];
+$("#path").innerHTML=stops.map((s,i)=>`<li><button data-i="${i}" aria-pressed="false" aria-label="${s[0]}"></button><span>${s[0]}</span></li>`).join("");
+function pick(i){document.querySelectorAll("#path button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.i==i));$("#stopinfo").innerHTML=`<h3>${stops[i][0]}</h3><p style="margin:0">${stops[i][1]}</p>`}
+$("#path").addEventListener("click",e=>{const b=e.target.closest("button");if(b)pick(b.dataset.i)});pick(0);
+
+/* Partenaires */
+const pts=[["MEMP","Enseignement maternel et primaire"],["MESTFP","Secondaire, technique et formation professionnelle"],["MESRS","Enseignement supérieur et recherche"],["OB","Office du Baccalauréat"],["ANIP","Identification des personnes"],["ASIN","Systèmes d’information et numérique"],["MN","Ministère du Numérique"],["COM","Communes et écoles"]];
+$("#partners").innerHTML=pts.map(p=>`<div class="pt"><b>${p[0]}</b>${p[1]}</div>`).join("");
+
+/* USSD */
+const us={home:["PEU Bénin","1. Mon enfant","2. Changer d’école","3. Suivre ma demande","4. Examens"],
+1:["Awa K. · CM2","N° PEU-BJ-…4281","Documents à jour","0. Retour"],
+2:["Transfert","Entrez le code de l’école souhaitée","(simulation)","0. Retour"],
+3:["Demande en cours","Étape 3 sur 5","Place confirmée","0. Retour"],
+4:["Examens","CEP : inscription ouverte","Aucune pièce requise","0. Retour"]};
+function ussd(k){const l=us[k];$("#ussd").innerHTML=`<div>${l[0]}</div>`+l.slice(1).map(t=>{const n=t.match(/^(\d)\./);return `<button data-u="${n?n[1]:""}">${t}</button>`}).join("")}
+$("#ussd").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const k=b.dataset.u;ussd(k&&k!=="0"&&us[k]?k:"home")});ussd("home");
+
+/* Famille */
+$("#kids").innerHTML=[["Awa K.","CM2","École publique de Calavi","PEU-BJ-2016-004281"],["Koffi K.","4e","Collège d’enseignement général","PEU-BJ-2012-003377"]].map(k=>`<div class="card" style="background:var(--soft)"><b>${k[0]}</b> <span class="tag">${k[1]}</span><div class="note">${k[2]}<br>${k[3]}</div></div>`).join("");
+const ai={exam:"Inscription aux examens : le dossier est prérempli. Vous vérifiez, puis confirmez. Aucune liste papier.",bourse:"Bourse : l’éligibilité est calculée à partir des données déjà détenues, sans nouvelle pièce justificative.",doc:"Documents : bulletins et attestations signés électroniquement, avec QR code, téléchargeables à tout moment."};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(b)$("#actinfo").innerHTML=`<b>${b.textContent}</b><p style="margin:8px 0 0">${ai[b.dataset.act]}</p>`});
+
+/* Démarche : assistant */
+let st=0,sel={kid:"Awa K.",school:"Complexe scolaire Cotonou Nord"},prog=0;
+const schools=["Complexe scolaire Cotonou Nord","École primaire publique de Parakou","Collège de Porto-Novo Centre"];
+function qr(){let s=7,h="";const r=()=>(s=(s*9301+49297)%233280)/233280;const fin=(x,y)=>[[0,0],[14,0],[0,14]].some(([a,b])=>x>=a&&x<a+7&&y>=b&&y<b+7&&(x-a===0||x-a===6||y-b===0||y-b===6||(x-a>1&&x-a<5&&y-b>1&&y-b<5)));for(let y=0;y<21;y++)for(let x=0;x<21;x++){const inF=(x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12);h+=`<i class="${(inF?fin(x,y):r()>.5)?"k":""}"></i>`}return `<div class="qr" role="img" aria-label="QR code de démonstration">${h}</div>`}
+function wiz(){
+  $("#stp").innerHTML=[0,1,2,3].map(i=>`<i class="${i<=st?"on":""}"></i>`).join("");
+  const w=$("#wiz");
+  if(st===0)w.innerHTML=`<h3>1. Qui change d’école ?</h3><label for="k">Enfant</label><select id="k"><option>Awa K.</option><option>Koffi K.</option></select><label for="s">Établissement souhaité</label><select id="s">${schools.map(s=>`<option>${s}</option>`).join("")}</select><p class="note">Les places disponibles s’affichent en direct dans la version réelle.</p><button class="btn" id="nx">Continuer</button>`;
+  if(st===1)w.innerHTML=`<h3>2. Vérification automatique</h3><p>Le système récupère les pièces auprès des administrations. Vous ne déposez rien.</p><div class="chk"><em>✓</em> Identité de l’enfant et du parent (NPI)</div><div class="chk"><em>✓</em> Bulletins et résultats (école d’origine)</div><div class="chk"><em>✓</em> Situation de scolarité (circonscription)</div><div class="chk"><em>✓</em> Place confirmée dans l’établissement souhaité</div><p style="margin-top:14px"><button class="btn alt" id="pv">Retour</button> <button class="btn" id="nx">Continuer</button></p>`;
+  if(st===2)w.innerHTML=`<h3>3. Confirmer la demande</h3><div class="kv"><div><div class="note">Enfant</div><b>${sel.kid}</b></div><div><div class="note">Nouvel établissement</div><b>${sel.school}</b></div><div><div class="note">Délai annoncé</div><b>72 heures maximum</b></div><div><div class="note">Frais</div><b>Gratuit</b></div></div><p class="note">L’école d’origine reçoit la demande et dépose le dossier sous 48 heures. Une alerte part automatiquement en cas de retard.</p><button class="btn alt" id="pv">Retour</button> <button class="btn" id="nx">Envoyer la demande</button>`;
+  if(st===3)w.innerHTML=`<h3>Demande envoyée</h3><div class="ussd">${qr()}<div style="flex:1;min-width:200px"><p><b>Récépissé n° TR-2026-0481</b></p><p>${sel.kid} · ${sel.school}</p><p class="note">Un SMS confirme chaque étape. Le QR code permet à toute école de vérifier le récépissé.</p><button class="btn" data-go="suivi">Suivre ma demande</button></div></div>`;
+  const nx=$("#nx"),pv=$("#pv");
+  if(nx)nx.onclick=()=>{if(st===0){sel.kid=$("#k").value;sel.school=$("#s").value}if(st===2){prog=1;sms("tr","PEU : demande de transfert TR-2026-0481 envoyée. Délai annoncé : 72 h.")}st++;wiz()};
+  if(pv)pv.onclick=()=>{st--;wiz()};
+}
+document.addEventListener("click",e=>{if(e.target.closest('[data-go="demarche"]')){st=0;wiz()}});wiz();
+
+/* Suivi */
+const ts=["Demande reçue","École d’origine : dossier transmis","Nouvelle école : place confirmée","Visa en ligne de l’autorité scolaire","Transfert finalisé"];
+function drawTrk(){
+  const t=$("#trk");
+  if(!prog){t.innerHTML=`<h3>Aucune demande en cours</h3><p>Lancez un transfert pour suivre ici chaque étape.</p><button class="btn" data-go="demarche">Changer d’école</button>`;return}
+  t.innerHTML=`<p><b>TR-2026-0481</b> · ${sel.kid} vers ${sel.school}</p><ul class="tl">${ts.map((x,i)=>`<li class="${i<prog?"ok":i===prog?"now":""}">${x}</li>`).join("")}</ul>${prog<ts.length?`<button class="btn" id="adv">Simuler l’étape suivante</button>`:`<p><b>Transfert terminé.</b> Le dossier de l’élève est rattaché à sa nouvelle école. Un SMS a été envoyé.</p>`}`;
+  const a=$("#adv");if(a)a.onclick=()=>{prog++;sms("tr","PEU : transfert, étape « "+ts[prog-1]+" » terminée.");drawTrk()};
+}
+
+/* Pilotage */
+const dep=[["Littoral",94],["Atlantique",91],["Ouémé",89],["Zou",87],["Borgou",84],["Mono",83],["Collines",82],["Plateau",80],["Couffo",78],["Donga",75],["Atacora",71],["Alibori",66]];
+$("#bars").innerHTML=dep.map(d=>`<div class="${d[1]<72?"lo":d[1]<82?"mid":""}"><em style="font-style:normal">${d[0]}</em><span><i style="width:${d[1]}%"></i></span><b>${d[1]} %</b></div>`).join("");
+
+/* Scolarité et paiements */
+function fmt(n){return n.toLocaleString("fr-FR")+" FCFA"}
+const fees=[["Droits d’inscription",15000],["Frais de scolarité",45000],["Activités et fournitures",10000]];
+const mot=[["Aucune exonération",0],["Élève en situation de handicap",100],["Orphelin",100],["Fratrie de 3 enfants et plus",50],["Famille à faible revenu",50],["Mérite (moyenne de 16 et plus)",30]];
+let pay={ex:0,tr:[0,0,0],last:"",op:"MTN Mobile Money"};
+function drawPay(){
+  const tot=fees.reduce((a,f)=>a+f[1],0),pct=mot[pay.ex][1],net=Math.round(tot*(100-pct)/100),t=Math.round(net/3),paid=pay.tr.filter(Boolean).length;
+  const ops=["MTN Mobile Money","Moov Money","Celtiis Cash","Carte bancaire"];
+  $("#pay").innerHTML=`<div class="kv"><div><div class="note">Élève</div><b>Awa K. · CM2</b></div><div><div class="note">Année scolaire</div><b>2026-2027</b></div></div>
+<h3 style="margin-top:16px">Frais de l’année</h3>${fees.map(f=>`<div class="chk"><span style="flex:1">${f[0]}</span><b>${fmt(f[1])}</b></div>`).join("")}
+<label for="ex">Exonération totale ou partielle</label><select id="ex">${mot.map((m,k)=>`<option value="${k}" ${k==pay.ex?"selected":""}>${m[0]}${m[1]?" · "+m[1]+" %":""}</option>`).join("")}</select>
+${pct?`<p class="note"><span class="tag">Droit vérifié</span> Contrôlé dans le dossier unique, sans pièce à fournir.</p>`:""}
+<div class="kv" style="margin-top:12px"><div><div class="note">Montant à payer</div><b style="font-size:22px">${fmt(net)}</b></div><div><div class="note">Déjà payé</div><b style="font-size:22px">${fmt(paid*t)}</b></div></div>
+${net?`<h3 style="margin-top:16px">Échéancier</h3>${[0,1,2].map(i=>`<div class="chk"><span style="flex:1">Tranche ${i+1}</span><b>${fmt(t)}</b>${pay.tr[i]?`<em>✓ Payée</em>`:`<button class="btn" data-pay="${i}" ${i&&!pay.tr[i-1]?"disabled":""}>Payer</button>`}</div>`).join("")}
+<label for="op">Moyen de paiement</label><select id="op">${ops.map(o=>`<option ${o===pay.op?"selected":""}>${o}</option>`).join("")}</select>`:`<p><b>Exonération totale : aucun paiement à effectuer.</b> L’inscription est confirmée automatiquement.</p>`}
+${pay.last}`;
+}
+
+/* Actes académiques */
+const actes=[["Relevé de notes","500 FCFA"],["Attestation de réussite","1 000 FCFA"],["Diplôme ou duplicata","2 000 FCFA"],["Attestation d’inscription","Gratuit"],["Certificat de scolarité","Gratuit"]];
+const parc=["BEPC 2021","BAC 2024","Licence 1 · Comptabilité"];
+const dst=["Demande reçue","Validée par l’établissement","Document délivré"];
+let dem=[];
+function drawAct(){
+  $("#act").innerHTML=`<h3>Nouvelle demande</h3><div class="kv"><div><label for="a1">Type d’acte</label><select id="a1">${actes.map((a,i)=>`<option value="${i}">${a[0]} · ${a[1]}</option>`).join("")}</select></div><div><label for="a2">Parcours concerné</label><select id="a2">${parc.map(p=>`<option>${p}</option>`).join("")}</select></div></div><p class="note">Aucune pièce à fournir : identité et résultats viennent du dossier unique. Les frais se paient par mobile money.</p><button class="btn" id="a3">Envoyer la demande</button>`;
+  drawDem();
+}
+function drawDem(){
+  $("#actl").innerHTML=dem.length?`<h3>Mes demandes</h3>${dem.map((d,i)=>`<div class="chk" style="align-items:flex-start;flex-wrap:wrap"><div style="flex:1;min-width:200px"><b>${d.a}</b> · ${d.p}<div class="note">${d.r} · ${dst[d.s]}</div></div>${d.s<2?`<button class="btn alt" data-adv="${i}">Simuler l’étape suivante</button>`:`<div style="display:flex;gap:10px;align-items:center">${qr()}<span class="note">Signé électroniquement.<br>Vérifiable par QR code.</span></div>`}</div>`).join("")}`:`<h3>Aucune demande</h3><p class="note">Vos demandes apparaîtront ici avec leur état.</p>`;
+}
+
+/* Espace école */
+const cls={"CM2 · Complexe scolaire Cotonou Nord":{m:["Mathématiques","Français"],s:["Awa K.","Yaovi A.","Fatou B.","Gildas D.","Rosine T."]},"Licence 2 · Comptabilité":{m:["Audit","Comptabilité générale"],s:["Ibrahim S.","Mariam O.","Judicaël H.","Sènami G.","Pascal Z."]}};
+let eco={c:Object.keys(cls)[0],n:{},pub:false,err:""};
+const avg=r=>r.every(v=>v!==""&&!isNaN(v))?((+r[0]+ +r[1])/2).toFixed(2):"—";
+function drawEco(){
+  const c=cls[eco.c],n=eco.n[eco.c]=eco.n[eco.c]||c.s.map(()=>["",""]);
+  $("#eco").innerHTML=`<label for="cl">Classe ou promotion</label><select id="cl">${Object.keys(cls).map(k=>`<option ${k===eco.c?"selected":""}>${k}</option>`).join("")}</select><p class="note">Connecté comme enseignant. Notes sur 20, contrôlées automatiquement.</p>
+<div style="overflow-x:auto"><table class="tb"><thead><tr><th>Élève</th>${c.m.map(m=>`<th>${m}</th>`).join("")}<th>Moyenne</th></tr></thead><tbody>${c.s.map((s,i)=>`<tr><td>${s}</td>${[0,1].map(j=>`<td><input type="number" min="0" max="20" step="0.25" inputmode="decimal" data-n="${i}-${j}" value="${n[i][j]}" ${eco.pub?"disabled":""} aria-label="${s}, ${c.m[j]}"></td>`).join("")}<td id="mo${i}"><b>${avg(n[i])}</b></td></tr>`).join("")}</tbody></table></div>
+${eco.err?`<p style="color:var(--r);font-weight:600">${eco.err}</p>`:""}
+${eco.pub?`<div class="card rcp"><b>Notes publiées et signées</b> par le directeur. Parents et étudiants notifiés par SMS. Bulletins et relevés générés automatiquement.<p><button class="btn alt" data-eco="open">Rouvrir pour correction (modification tracée)</button></p></div>`:`<p style="margin-top:14px"><button class="btn" data-eco="pub">Valider et publier</button> <button class="btn alt" data-eco="fill">Remplir un exemple</button></p>`}`;
+}
+
+/* Actions */
+document.addEventListener("click",e=>{
+  const p=e.target.closest("[data-pay]");
+  if(p){const i=+p.dataset.pay;pay.op=$("#op").value;pay.tr[i]=1;pay.last=`<div class="card rcp"><b>Paiement reçu</b> · tranche ${i+1} · ${pay.op}<br>Reçu électronique n° RC-2026-${2000+i}<div style="margin-top:8px">${qr()}</div></div>`;sms("pay","PEU : paiement reçu pour Awa K., tranche "+(i+1)+". Reçu n° RC-2026-"+(2000+i)+".");drawPay();return}
+  if(e.target.id==="a3"){const a=actes[+$("#a1").value][0];dem.unshift({a,p:$("#a2").value,r:"AC-2026-"+(1001+dem.length),s:0});drawDem();return}
+  const v=e.target.closest("[data-adv]");if(v){const dd=dem[+v.dataset.adv];dd.s++;sms("act","PEU : "+dd.a+" ("+dd.r+") : "+dst[dd.s]+".");drawDem();return}
+  const o=e.target.closest("[data-eco]");if(!o)return;
+  const k=o.dataset.eco,n=eco.n[eco.c];
+  if(k==="fill"){const ex=[[14,15.5],[12,13],[17,16],[9.5,11],[15,14.25]];n.forEach((r,i)=>{r[0]=ex[i][0];r[1]=ex[i][1]});eco.err=""}
+  if(k==="open")eco.pub=false;
+  if(k==="pub"){const bad=n.some(r=>r.some(v=>v===""||isNaN(v)||v<0||v>20));if(bad)eco.err="Saisissez toutes les notes, chacune entre 0 et 20, avant de publier.";else{eco.err="";eco.pub=true;sms("note","PEU : les notes de « "+eco.c+" » sont publiées. Consultez le dossier de votre enfant.")}}
+  drawEco();
+});
+document.addEventListener("change",e=>{
+  if(e.target.id==="ex"){pay.ex=+e.target.value;drawPay()}
+  if(e.target.id==="cl"){eco.c=e.target.value;eco.pub=false;eco.err="";drawEco()}
+});
+document.addEventListener("input",e=>{
+  const d=e.target.dataset&&e.target.dataset.n;if(!d)return;
+  const [i,j]=d.split("-");eco.n[eco.c][i][j]=e.target.value;$("#mo"+i).innerHTML="<b>"+avg(eco.n[eco.c][i])+"</b>";
+});
+/* Notes et réclamations */
+const notes=[["Mathématiques",14],["Français",15.5]];
+const mrec=["Erreur de saisie","Erreur de calcul de la moyenne","Copie à revoir","Note manquante"];
+const rst=["Réclamation reçue","Examinée par l’enseignant","Décision rendue"];
+let recs=[],openRec=null;
+function drawNotes(){
+  $("#nt").innerHTML=`<div class="note">Awa K. · CM2 · Trimestre 1 (notes publiées par l’école)</div><table class="tb"><thead><tr><th>Matière</th><th>Note sur 20</th><th></th></tr></thead><tbody>${notes.map((n,i)=>`<tr><td>${n[0]}</td><td><b>${n[1]}</b></td><td><button class="btn alt" data-rec="${i}">Contester</button></td></tr>`).join("")}</tbody></table>${openRec!==null?`<div class="card rcp"><h3>Réclamation : ${notes[openRec][0]}</h3><label for="rm">Motif</label><select id="rm">${mrec.map(m=>`<option>${m}</option>`).join("")}</select><label for="rc">Précisions</label><textarea id="rc" class="ta" rows="3" placeholder="Expliquez en quelques mots"></textarea><p class="note">Réponse sous 5 jours ouvrés. Un SMS vous informe à chaque étape.</p><button class="btn" id="rs">Envoyer la réclamation</button></div>`:""}`;
+  $("#rl").innerHTML=recs.length?`<h3>Mes réclamations</h3>${recs.map((r,i)=>`<div class="chk" style="align-items:flex-start;flex-wrap:wrap"><div style="flex:1;min-width:200px"><b>${r.m}</b> · ${r.mo}<div class="note">${r.r} · ${rst[r.s]}</div>${r.s===2?`<div style="margin-top:6px"><span class="tag">Décision</span> ${r.mo.startsWith("Erreur")?"Note corrigée et bulletin mis à jour.":"Note maintenue après réexamen, décision motivée consultable."}</div>`:""}</div>${r.s<2?`<button class="btn alt" data-radv="${i}">Simuler l’étape suivante</button>`:""}</div>`).join("")}`:`<h3>Aucune réclamation</h3><p class="note">Une note vous semble erronée ? Touchez « Contester » : l’enseignant et le directeur répondent dans un délai fixé.</p>`;
+}
+
+/* Alertes SMS */
+let smsL=["PEU : le dossier de Awa K. est relié à ce numéro. Vous recevrez ici les alertes importantes."],pr={pay:1,note:1,act:1,rec:1,tr:1};
+function sms(c,t){if(!pr[c])return;smsL.unshift(t);drawSms()}
+function drawSms(){
+  const lab=[["pay","Paiements et rappels de tranche"],["note","Publication des notes"],["act","Demandes d’actes"],["rec","Réclamations de notes"],["tr","Transferts d’école"]];
+  $("#sm").innerHTML=`<div class="ussd"><div class="phone" style="width:260px;min-height:280px"><div style="opacity:.7">Messages · PEU</div>${smsL.map(t=>`<div class="bb">${t}</div>`).join("")}</div><div style="flex:1;min-width:230px"><h3>Mes alertes</h3>${lab.map(l=>`<label class="cb"><input type="checkbox" data-pr="${l[0]}" ${pr[l[0]]?"checked":""}> ${l[1]}</label>`).join("")}<p><button class="btn alt" id="st">Envoyer un rappel de paiement</button></p><p class="note">Faites une action dans la maquette (paiement, publication de notes, acte, réclamation) : le SMS arrive ici. Fonctionne sur tout téléphone, sans connexion.</p></div></div>`;
+  const b=document.querySelector('#nav [data-go="sms"]');if(b)b.textContent="Alertes SMS"+(smsL.length>1?" ("+smsL.length+")":"");
+}
+document.addEventListener("click",e=>{
+  const r=e.target.closest("[data-rec]");if(r){openRec=+r.dataset.rec;drawNotes();return}
+  if(e.target.id==="rs"){const m=notes[openRec][0];recs.unshift({m,mo:$("#rm").value,c:$("#rc").value,r:"RN-2026-"+(301+recs.length),s:0});openRec=null;sms("rec","PEU : réclamation sur « "+m+" » reçue. Réponse sous 5 jours ouvrés.");drawNotes();return}
+  const a=e.target.closest("[data-radv]");if(a){const d=recs[+a.dataset.radv];d.s++;sms("rec","PEU : réclamation "+d.r+" : "+rst[d.s]+".");drawNotes();return}
+  if(e.target.id==="st")sms("pay","PEU : rappel, la tranche 2 de Awa K. est à payer avant le 15.");
+});
+document.addEventListener("change",e=>{if(e.target.dataset&&e.target.dataset.pr){pr[e.target.dataset.pr]=e.target.checked?1:0}});
+drawPay();drawAct();drawEco();drawNotes();drawSms();
+
+go(location.hash.slice(1)||"accueil");
+</script>
+</body>
+</html>
